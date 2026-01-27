@@ -1,0 +1,24 @@
+name: Demo trigger event
+
+on:
+  # Webhooks events
+  push:
+    branches:
+     - main
+     - feat/*
+  pull_request:
+    branches:
+      - main
+  issues:
+    types:
+      - opened
+      - closed
+  # Schdule events
+  # Manual events
+
+jobs:
+  Greeting:
+    runs-on: unbuntu-latest
+    steps:
+      - name: Greeting Step
+        run: echo Hello World!!!
