@@ -1,0 +1,27 @@
+name: Demo composite action
+
+on:
+  workflow_dispatch:
+    inputs:
+      greetingWord:
+        required: true
+        default: Good morning
+      yourName:
+        required: true
+        default: Batman
+
+jobs:
+  Demo_calling_composite_action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Call composite action
+        id: step1
+        uses: ./.github/actions/demo-composite-actions
+        with:
+          greeting: ${{ inputs. greetingWord}}
+          name: ${{ inputs.yourName }}
+
+      - name: Print output from last step
+        run: echo "${{steps.step1.output.full-greeting}}"
