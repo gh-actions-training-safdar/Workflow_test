@@ -49,4 +49,6 @@ jobs:
         run: echo "${{ github.actor }} is learning Github Actions."
       - name: Step3
         run: echo "Great!"
-        if: ${{ inputs.areyoufeelinggood == false }}
+        if: ${{inputs.areyoufeelinggood == false}}
+      - name: Step4
+        run: echo "Don't worry. I am here with you!!"
