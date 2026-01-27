@@ -34,13 +34,29 @@ on:
           - Okay
           - Naa
 
+env:
+  #Add any evnironment varaibles
+  MY_NAME: Batman
+  GREETING: Hello
 
 jobs:
   Greeting:
     runs-on: ubuntu-latest
     steps:
       - name: Greeting Step
-        run: echo Hello World!!!
+        run: |
+          echo Hello World!!! 
+          echo I am Vengeance. I am the knight. I AM $GREETING $MY_NAME !!
+  Greeting2:
+    runs-on: ubuntu-latest
+    env:
+      GREETING: Good morning
+      MY_NAME: David
+    steps:
+      - name: Greeting Step
+        run: |
+          echo Hello World!!!
+          echo I am Vengeance. I am the knight. I AM $GREETING $MY_NAME !!
   Job2:
     runs-on: ubuntu-latest
     needs: [Greeting]
