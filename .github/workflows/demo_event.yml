@@ -18,7 +18,7 @@ on:
 
 jobs:
   Greeting:
-    runs-on: unbuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Greeting Step
         run: echo Hello World!!!
