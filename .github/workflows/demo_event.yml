@@ -14,7 +14,26 @@ on:
       - opened
       - closed
   # Schdule events
+  schedule:
+    - cron: 0 0 * * *
+    - cron: 0 9 * * 0
   # Manual events
+  workflow_dispatch:
+    inputs:
+      yourName:
+        required: true
+        default: My friend
+      areyoufeelinggood:
+        required: true
+        type: boolean
+      howdoyoufindGithubActions:
+        required: false
+        type: choice
+        options:
+          - Awesome
+          - Okay
+          - Naa
+
 
 jobs:
   Greeting:
