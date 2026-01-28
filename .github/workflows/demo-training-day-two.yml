@@ -52,6 +52,6 @@ jobs:
     needs: job1
     steps:
       - name: Step1 of Job2
-        run: Good Morning
+        run: echo Good Morning!!
 
 
