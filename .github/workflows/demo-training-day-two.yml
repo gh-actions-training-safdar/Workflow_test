@@ -1,0 +1,57 @@
+# create a workflow with a name of your choice
+name: Demo Day 2
+# it should be triggered whenever there is a push on the main branch
+on:
+  # Webhooks events
+  push:
+    branches:
+     - main
+# it should be triggered manually too
+  # Manual events
+  workflow_dispatch:
+    inputs:
+      myVar1:
+        required: true
+        type: boolean
+        default: true
+      myVar2:
+        required: true
+        type: string
+#define 2 evironment variables: VAR1 and VAR2
+#VAR1 is boolean
+#VAR2 is text
+
+env:
+  #Add any evnironment varaibles
+  VAR1: ${{inputs.myVar1}}
+  VAR2: ${{inputs.myVar2}}
+
+jobs:
+# it should have 2 jobs
+# 1st job should contain 2 steps
+#step1:
+# - should be executed only if VAR1 is true
+# - echo VAR2
+# step2:
+# - echo you name
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step1 of Job1
+        run: |
+          echo Hello World!!! 
+          echo I am Vengeance. I am the knight. I AM $GREETING $MY_NAME !!
+        if: ${{env.VAR1 == true}}
+      - name: Step2 of Job1
+        run: echo ${{github.actor}}
+# 2nd job should be executed only if job1 is executed successfully.
+# job 2 has only 1 step - you can do here anything you want, e.g. echo "Good Morning"
+#Commit the file and run the workflow, heck if eveything works
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Step1 of Job2
+        run: Good Morning
+
+
