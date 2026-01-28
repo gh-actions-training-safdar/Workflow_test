@@ -41,7 +41,7 @@ jobs:
         run: |
           echo Hello World!!! 
           echo I am Vengeance. I am the knight. I AM $GREETING $MY_NAME !!
-        if: ${{env.VAR1 == true}}
+        if: "${{env.VAR1 == true}}"
       - name: Step2 of Job1
         run: echo ${{github.actor}}
 # 2nd job should be executed only if job1 is executed successfully.
