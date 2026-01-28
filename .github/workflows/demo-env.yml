@@ -1,0 +1,35 @@
+name: Demo Deplyment Envs
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options:
+          - test
+          - staging
+          - Production
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: Building the app...
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo Running Tests...
+  Deployment:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - Test
+    steps:
+      - name: Deployment
+        run: echo Deploying the App
+        
+      
+    
+      
+    
